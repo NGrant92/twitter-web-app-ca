@@ -1,0 +1,14 @@
+{
+  "name": "twitter-web-app",
+  "version": "1.0.0",
+  "description": "An assignment web application to develop a robust twitter like app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Niall Grant",
+  "license": "ISC",
+  "dependencies": {
+    "hapi": "^16.6.2"
+  }
+}
