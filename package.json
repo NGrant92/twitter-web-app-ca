@@ -1,5 +1,5 @@
 {
-  "name": "lab05",
+  "name": "twitter-web-app",
   "version": "1.0.0",
   "description": "an application to post and read tweet like messages",
   "main": "index.js",
