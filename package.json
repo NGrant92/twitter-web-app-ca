@@ -1,14 +1,37 @@
 {
-  "name": "twitter-web-app",
+  "name": "lab05",
   "version": "1.0.0",
-  "description": "An assignment web application to develop a robust twitter like app",
+  "description": "an application to post and read tweet like messages",
   "main": "index.js",
   "scripts": {
+    "start": "node index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Niall Grant",
+  "author": "NGrant",
   "license": "ISC",
   "dependencies": {
-    "hapi": "^16.6.2"
-  }
+    "boom": "^6.0.0",
+    "handlebars": "^4.0.10",
+    "hapi": "^16.6.0",
+    "hapi-auth-cookie": "^7.0.0",
+    "inert": "^4.2.1",
+    "joi": "^11.1.1",
+    "mongoose": "^4.11.14",
+    "mongoose-seeder": "^1.2.1",
+    "vision": "^4.1.1",
+    "winston": "^2.4.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "sync-request": "^4.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NGrant92/twitter-web-app-ca.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NGrant92/twitter-web-app-ca/issues"
+  },
+  "homepage": "https://github.com/NGrant92/twitter-web-app-ca#readme"
 }

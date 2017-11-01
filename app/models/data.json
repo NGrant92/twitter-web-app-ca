@@ -1,0 +1,38 @@
+{
+  "users": {
+    "_model": "User",
+    "homer": {
+      "firstName": "Homer",
+      "lastName": "Simpson",
+      "email": "homer@simpson.com",
+      "password": "secret"
+    },
+    "marge": {
+      "firstName": "Marge",
+      "lastName": "Simpson",
+      "email": "marge@simpson.com",
+      "password": "secret"
+    },
+    "bart": {
+      "firstName": "Bart",
+      "lastName": "Simpson",
+      "email": "bart@simpson.com",
+      "password": "secret"
+    }
+  },
+  "tweets": {
+    "_model": "Tweet",
+    "one": {
+      "message": "test message 1",
+      "user": "->users.bart"
+    },
+    "two": {
+      "message": "test message 2",
+      "user": "->users.marge"
+    },
+    "three": {
+      "message": "test message 3",
+      "user": "->users.homer"
+    }
+  }
+}
