@@ -1,14 +1,11 @@
 
-<div class="ui grid ">
-  <div class="ui form six wide column">
+  <div class="ui form eight wide column">
     <div class="ui stacked segment">
       <form action="/tweet" method="POST">
         <div class="grouped inline fields">
-          <div class="text"><h3>Tweet</h3></div>
-          <div class="field">
-            <div class="ui labeled input">
+          <div class="text"><h3>Post a Tweet</h3></div>
+          <div class="ui field">
               <textarea name="bio" rows="3" maxlength="140" placeholder="Description here..." required></textarea>
-            </div>
           </div>
         </div>
         <button class="ui blue submit button"><i class="edit icon"></i> Tweet</button>
@@ -16,7 +13,3 @@
       {{> formerror }}
     </div>
   </div>
-  <aside class="six wide column">
-    <img src="images/homer4.jpeg" class="ui medium image">
-  </aside>
-</div>

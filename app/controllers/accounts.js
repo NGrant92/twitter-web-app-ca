@@ -63,6 +63,7 @@ exports.authenticate = {
         request.cookieAuth.set({
           loggedIn: true,
           loggedInUser: user.email,
+          user: foundUser,
         });
         reply.redirect('/home');
       } else {
@@ -84,6 +85,7 @@ exports.userRegister = {
       lastName: Joi.string().required(),
       email: Joi.string().email().required(),
       password: Joi.string().required(),
+      img: "http://res.cloudinary.com/ngrant/image/upload/v1509624963/Profile_iet7qx.png",
     },
 
     options: {
