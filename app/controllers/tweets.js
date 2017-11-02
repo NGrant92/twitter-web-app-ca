@@ -8,21 +8,29 @@ const Joi = require("joi");
 exports.home = {
   handler: function(request, reply) {
 
-    let userList = User.find({});
-
     User.findOne({ email: request.auth.credentials.loggedInUser })
       .then(user => {
-        Tweet.find({})
+        return Tweet.find({})
           .populate("user")
           .then(tweets => {
-            reply.view("home", {
-              title: "Post a Tweet",
-              tweets: tweets,
-              user: user
+            return [tweets, user];
+          })
+          .then(results => {
+            return User.find({}).then(userlist => {
+              return [results[0], results[1], userlist];
             });
           });
       })
+      .then(result => {
+        reply.view("home", {
+          title: "Post a Tweet",
+          tweets: result[0],
+          user: result[1],
+          userlist: result[2]
+        });
+      })
       .catch(err => {
+        Logger.info(err);
         reply.redirect("/");
       });
   }
