@@ -8,6 +8,8 @@ const Joi = require("joi");
 exports.home = {
   handler: function(request, reply) {
 
+    let userList = User.find({});
+
     User.findOne({ email: request.auth.credentials.loggedInUser })
       .then(user => {
         Tweet.find({})
