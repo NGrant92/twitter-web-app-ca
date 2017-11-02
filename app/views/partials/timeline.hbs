@@ -1,0 +1,16 @@
+<table class = "ui celled table">
+  <thead>
+  <tr>
+    <th>User</th>
+    <th>Message</th>
+  </tr>
+  </thead>
+  <tbody>
+  {{#each tweets}}
+    <tr>
+      <td>{{user.firstName}} {{user.lastName}} </td>
+      <td>{{message}}</td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
