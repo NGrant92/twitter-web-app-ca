@@ -1,9 +1,12 @@
 <div class="ui list">
-  <div class="item">
-    <img class="ui avatar image" src="http://res.cloudinary.com/ngrant/image/upload/v1509624963/Profile_iet7qx.png">
-    <div class="content">
-      <a class="header">Rachel</a>
-      <div class="description">Last seen watching <a><b>Arrested Development</b></a> just now.</div>
+  <h3 class="ui dividing header">Users</h3>
+  {{#each userlist}}
+    <div class="item">
+      <img class="ui avatar image" src="{{img}}"/>
+      <div class="content">
+        <a class="Header"> {{firstName}} {{lastName}}</a>
+        <a class="description">{{email}}</a>
+      </div>
     </div>
-  </div>
+  {{/each}}
 </div>
