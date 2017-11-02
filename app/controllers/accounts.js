@@ -84,12 +84,8 @@ exports.userRegister = {
     payload: {
       firstName: Joi.string().required(),
       lastName: Joi.string().required(),
-      email: Joi.string()
-        .email()
-        .required(),
-      password: Joi.string().required(),
-      img:
-        "http://res.cloudinary.com/ngrant/image/upload/v1509624963/Profile_iet7qx.png"
+      email: Joi.string().email().required(),
+      password: Joi.string().required()
     },
 
     options: {
@@ -108,7 +104,7 @@ exports.userRegister = {
 
   handler: function(request, reply) {
     const user = new User(request.payload);
-
+    user.img = "http://res.cloudinary.com/ngrant/image/upload/v1509624963/Profile_iet7qx.png";
     user
       .save()
       .then(newUser => {
