@@ -1,7 +1,6 @@
 "use strict";
 const Tweet = require("../models/tweet");
 const User = require("../models/user");
-const Candidate = require("../models/user");
 const Logger = require("../utils/logger");
 const Joi = require("joi");
 
@@ -36,38 +35,21 @@ exports.home = {
 };
 
 exports.tweet = {
-  validate: {
-    payload: {
-      tweetText: Joi.string().required()
-    },
 
-    failAction: function(request, reply, source, error) {
-      User.findOne({ email: request.auth.credentials.loggedInUser })
+    handler: function(request, reply) {
+      let userEmail = request.auth.credentials.loggedInUser;
+      const tweet = new Tweet(request.payload);
+
+      User.findOne({ email: userEmail })
         .then(user => {
-          return Tweet.find({})
-            .populate("user")
-            .then(tweets => {
-              return [tweets, user];
-            })
-            .then(results => {
-              return User.find({}).then(userlist => {
-                return [results[0], results[1], userlist];
-              });
-            });
+          tweet.user = user._id;
+          return tweet.save();
         })
-        .then(result => {
-          reply.view("home", {
-            title: "Post a Tweet",
-            tweets: result[0],
-            user: result[1],
-            userlist: result[2],
-            errors: error.data.details
-          });
+        .then(newTweet => {
+          reply.redirect("/home");
         })
         .catch(err => {
-          Logger.info(err);
           reply.redirect("/");
         });
     }
-  }
 };
