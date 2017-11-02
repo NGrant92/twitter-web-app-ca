@@ -5,19 +5,22 @@
       "firstName": "Homer",
       "lastName": "Simpson",
       "email": "homer@simpson.com",
-      "password": "secret"
+      "password": "secret",
+      "img": "http://res.cloudinary.com/ngrant/image/upload/v1506255274/LhFydmk_ueraaq.png"
     },
     "marge": {
       "firstName": "Marge",
       "lastName": "Simpson",
       "email": "marge@simpson.com",
-      "password": "secret"
+      "password": "secret",
+      "img": "http://res.cloudinary.com/ngrant/image/upload/v1509621811/marge_efpuft.jpg"
     },
     "bart": {
       "firstName": "Bart",
       "lastName": "Simpson",
       "email": "bart@simpson.com",
-      "password": "secret"
+      "password": "secret",
+      "img": "http://res.cloudinary.com/ngrant/image/upload/v1503767824/gteyxykqycd8zu2jwtiy.png"
     }
   },
   "tweets": {
