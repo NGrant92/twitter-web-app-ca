@@ -1,7 +1,22 @@
 {{> mainmenu _id="home" }}
-<section class="ui raised segment">
 
-  {{> tweet }}
+<div class="ui equal width padded grid">
+  <div class = "four wide column">
+    {{> profilecard}}
+  </div>
 
+  <div class = "eight wide align right column padded">
+    <section class="ui raised segment">
+      {{> tweet }}
+    </section>
+    <section class="ui raised segment">
+      {{> timeline }}
+    </section>
+  </div>
 
-</section>
+  <div class = "four wide align right column padded">
+    <section class="ui raised segment">
+    </section>
+  </div>
+</div>
+
