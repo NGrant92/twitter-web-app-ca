@@ -17,7 +17,6 @@ exports.home = {
               if(tweet.user.id === user.id){
                 myTweets.push(tweet);
               }
-              Logger.info(myTweets)
             }
             return [tweets.reverse(), myTweets.reverse(), user];
           })
@@ -29,7 +28,7 @@ exports.home = {
       })
       .then(result => {
         reply.view("home", {
-          title: "Post a Tweet",
+          title: "Home",
           tweets: result[0],
           myTweets: result[1],
           user: result[2],

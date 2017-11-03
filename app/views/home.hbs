@@ -5,20 +5,18 @@
     {{> profilecard}}
   </div>
 
-  <div class = "eight wide align right column padded">
-    <section class="ui raised segment">
-      {{> tweet }}
+  <div class = "eight wide align right column">
+    {{> tweet }}
 
-      <section class="ui segment" id="timelineTabs" style="overflow:auto;max-height:600px;min-height:250px;">
-        <h3 class="ui dividing header">Timeline</h3>
-        <div class="ui pointing secondary demo menu">
-          <a class="active item" data-tab="first"><i class="users icon"></i>All Tweets</a>
-          <a class="item" data-tab="second"><i class="user icon"></i>My Tweets</a>
-        </div>
+    <section class="ui segment" id="timelineTabs" style=overflow:auto;max-height:1200px;min-height:200px;">
+      <h3 class="ui dividing header">Timeline</h3>
+      <div class="ui pointing secondary demo menu">
+        <a class="active item" data-tab="first"><i class="users icon"></i>All Tweets</a>
+        <a class="item" data-tab="second"><i class="user icon"></i>My Tweets</a>
+      </div>
 
-        <div class="ui active tab" data-tab="first" style="padding: 10px;">{{> alltweets}}</div>
-        <div class="ui tab" data-tab="second" style="padding: 10px;">{{> mytweets}}</div>
-      </section>
+      <div class="ui active tab" data-tab="first" style="padding: 10px;">{{> alltweets}}</div>
+      <div class="ui tab" data-tab="second" style="padding: 10px;">{{> mytweets}}</div>
     </section>
   </div>
 
