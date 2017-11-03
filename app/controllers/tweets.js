@@ -11,7 +11,7 @@ exports.home = {
         return Tweet.find({})
           .populate("user")
           .then(tweets => {
-            return [tweets, user];
+            return [tweets.reverse(), user];
           })
           .then(results => {
             return User.find({}).then(userlist => {
