@@ -1,9 +1,25 @@
+<form action="/home/tweet" method="POST">
 {{#each myTweets}}
   <div class="ui segment">
-    <div class="five wide item">
-      <img class="ui two wide avatar image" src="{{user.img}}"/>
-      <a class="Header"> {{user.firstName}} {{user.lastName}}</a>
-      <p style="word-break:break-all;white-space:normal;">{{message}}</p>
-    </div>
+    <table class="ui padded very basic celled table">
+      <tr>
+        <td>
+          <div class="item">
+            <img class="ui two wide avatar image" src="{{user.img}}"/>
+            <a class="Header"> {{user.firstName}} {{user.lastName}}</a>
+            <p style="word-break:break-all;white-space:normal;">{{message}}</p>
+          </div>
+        </td>
+        <td class="collapsing">
+          <div class="ui checkbox">
+            <input type="checkbox" name="tweet" id="{{id}}">
+            <label></label>
+          </div>
+        </td>
+      </tr>
+    </table>
   </div>
 {{/each}}
+<a class="ui mini red icon button" style="float: right;"><i class="trash icon"></i> Delete Selected</a>
+</form>
+<a class="ui mini red icon button" href="/tweets/deleteall/{{user.email}}" style="float: right;"><i class="trash icon"></i> Delete All</a>

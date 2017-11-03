@@ -104,3 +104,9 @@ exports.viewUser = {
     }
   }
 };
+
+exports.deleteAllTweets = {
+  handler: function (request, reply) {
+    reply.redirect("/");
+  }
+};
