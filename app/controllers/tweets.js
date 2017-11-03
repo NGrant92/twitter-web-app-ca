@@ -11,11 +11,19 @@ exports.home = {
         return Tweet.find({})
           .populate("user")
           .then(tweets => {
-            return [tweets.reverse(), user];
+            let myTweets = [];
+            for(let i = 0; i < tweets.length; i++){
+              let tweet = tweets[i];
+              if(tweet.user.id === user.id){
+                myTweets.push(tweet);
+              }
+              Logger.info(myTweets)
+            }
+            return [tweets.reverse(), myTweets.reverse(), user];
           })
           .then(results => {
             return User.find({}).then(userlist => {
-              return [results[0], results[1], userlist];
+              return [results[0], results[1], results[2], userlist];
             });
           });
       })
@@ -23,8 +31,9 @@ exports.home = {
         reply.view("home", {
           title: "Post a Tweet",
           tweets: result[0],
-          user: result[1],
-          userlist: result[2]
+          myTweets: result[1],
+          user: result[2],
+          userlist: result[3]
         });
       })
       .catch(err => {
