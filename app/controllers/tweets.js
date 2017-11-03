@@ -98,15 +98,27 @@ exports.viewUser = {
           Logger.info(err);
           reply.redirect("/");
         });
-    }
-    else{
+    } else {
       reply.redirect("/home");
     }
   }
 };
 
 exports.deleteAllTweets = {
-  handler: function (request, reply) {
-    reply.redirect("/");
+  handler: function(request, reply) {
+    let userEmail = request.params.email;
+
+    User.findOne({ email: userEmail })
+      .then(user => {
+        Logger.info(user.id);
+        Tweet.remove({ user: user.id });
+      })
+      .then(result => {
+        reply.redirect("/home");
+      })
+      .catch(err => {
+        Logger.info(err);
+        reply.redirect("/");
+      });
   }
 };
