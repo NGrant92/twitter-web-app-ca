@@ -12,9 +12,9 @@ exports.home = {
           .populate("user")
           .then(tweets => {
             let myTweets = [];
-            for(let i = 0; i < tweets.length; i++){
+            for (let i = 0; i < tweets.length; i++) {
               let tweet = tweets[i];
-              if(tweet.user.id === user.id){
+              if (tweet.user.id === user.id) {
                 myTweets.push(tweet);
               }
             }
@@ -43,21 +43,27 @@ exports.home = {
 };
 
 exports.tweet = {
+  handler: function(request, reply) {
+    let userEmail = request.auth.credentials.loggedInUser;
+    const tweet = new Tweet(request.payload);
 
-    handler: function(request, reply) {
-      let userEmail = request.auth.credentials.loggedInUser;
-      const tweet = new Tweet(request.payload);
+    User.findOne({ email: userEmail })
+      .then(user => {
+        tweet.user = user._id;
+        return tweet.save();
+      })
+      .then(newTweet => {
+        reply.redirect("/home");
+      })
+      .catch(err => {
+        reply.redirect("/");
+      });
+  }
+};
 
-      User.findOne({ email: userEmail })
-        .then(user => {
-          tweet.user = user._id;
-          return tweet.save();
-        })
-        .then(newTweet => {
-          reply.redirect("/home");
-        })
-        .catch(err => {
-          reply.redirect("/");
-        });
-    }
+exports.viewUser = {
+  handler: function(request, reply) {
+    Logger.info("about to redirect");
+    reply.view("viewuser");
+  }
 };
