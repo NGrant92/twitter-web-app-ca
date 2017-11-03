@@ -13,7 +13,7 @@ module.exports = [
   { method: "POST", path: "/settings/update", config: Accounts.updateSettings },
 
   { method: "GET", path: "/home", config: Tweets.home },
-  { method: "GET", path: "/viewuser/{id}", config: Tweets.viewUser },
+  { method: "GET", path: "/viewuser/{email}", config: Tweets.viewUser },
   { method: "POST", path: "/home/tweet", config: Tweets.tweet },
 
   {

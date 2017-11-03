@@ -63,7 +63,44 @@ exports.tweet = {
 
 exports.viewUser = {
   handler: function(request, reply) {
-    Logger.info("about to redirect");
-    reply.view("viewuser");
+    let paramEmail = request.params.email;
+
+    if (paramEmail !== request.auth.credentials.loggedInUser) {
+      User.findOne({ email: paramEmail })
+        .then(user => {
+          return Tweet.find({})
+            .populate("user")
+            .then(tweets => {
+              let userTweets = [];
+              for (let i = 0; i < tweets.length; i++) {
+                let tweet = tweets[i];
+                if (tweet.user.id === user.id) {
+                  userTweets.push(tweet);
+                }
+              }
+              return [userTweets.reverse(), user];
+            })
+            .then(results => {
+              return User.find({}).then(userlist => {
+                return [results[0], results[1], userlist];
+              });
+            });
+        })
+        .then(result => {
+          reply.view("viewuser", {
+            title: result[1].firstName + "'s Profile",
+            tweets: result[0],
+            user: result[1],
+            userlist: result[2]
+          });
+        })
+        .catch(err => {
+          Logger.info(err);
+          reply.redirect("/");
+        });
+    }
+    else{
+      reply.redirect("/home");
+    }
   }
 };
