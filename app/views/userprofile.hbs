@@ -1,0 +1,20 @@
+{{> mainmenu _id="home" }}
+
+<div class="ui equal width padded grid">
+  <div class = "four wide column">
+    {{> profilecard}}
+  </div>
+
+  <div class = "eight wide align right column">
+    <section class="ui segment" id="timelineTabs" style=overflow:auto;max-height:1200px;min-height:200px;">
+      <h3 class="ui dividing header">Timeline</h3>
+      {{> alltweets}}
+    </section>
+  </div>
+
+  <div class = "four wide align right column padded">
+    <section class="ui raised segment">
+      {{> userlist }}
+    </section>
+  </div>
+</div>
