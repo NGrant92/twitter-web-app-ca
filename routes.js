@@ -15,7 +15,8 @@ module.exports = [
   { method: "GET", path: "/home", config: Tweets.home },
   { method: "GET", path: "/viewuser/{email}", config: Tweets.viewUser },
   { method: "POST", path: "/home/tweet", config: Tweets.tweet },
-  { method: "GET", path: "/tweets/deleteall/{email}", config: Tweets.deleteAllTweets },
+  { method: "GET", path: "/tweets/deleteall", config: Tweets.deleteAllTweets },
+  { method: "POST", path: "/tweets/deletetweetset", config: Tweets.deleteTweetSet },
 
   {
     method: "GET",

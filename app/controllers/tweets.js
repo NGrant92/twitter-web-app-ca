@@ -106,7 +106,7 @@ exports.viewUser = {
 
 exports.deleteAllTweets = {
   handler: function(request, reply) {
-    let userEmail = request.params.email;
+    let userEmail = request.auth.credentials.loggedInUser;
 
     User.findOne({ email: userEmail })
       .then(user => {
@@ -119,5 +119,22 @@ exports.deleteAllTweets = {
         Logger.info(err);
         reply.redirect("/");
       });
+  }
+};
+
+exports.deleteTweetSet = {
+  handler: function(request, reply) {
+    let tweetSet = Object.keys(request.payload);
+    let tweetid;
+    for (tweetid in tweetSet) {
+      Tweet.findOneAndRemove({ id: tweetid })
+        .then(result => {
+          Logger.info("Tweet Removed");
+        })
+        .catch(err => {
+          Logger.info(err);
+        });
+    }
+    reply.redirect("/home");
   }
 };

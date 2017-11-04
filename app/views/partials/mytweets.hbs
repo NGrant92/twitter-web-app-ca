@@ -1,4 +1,4 @@
-<form action="/home/tweet" method="POST">
+<form action="/tweets/deletetweetset" method="POST">
   {{#each myTweets}}
     <div class="ui segment">
       <table class="ui padded very basic celled table">
@@ -11,9 +11,9 @@
             </div>
           </td>
           <td class="collapsing">
-            <div class="ui checkbox">
-              <input type="checkbox" name="tweet" id="{{id}}">
-              <label></label>
+            <div class="ui checkbox" id="{{../user.id}}">
+              <input type="checkbox" name="{{id}}">
+              <label id="{{id}}"></label>
             </div>
           </td>
         </tr>
@@ -22,4 +22,4 @@
   {{/each}}
   <button class="ui mini red icon button" style="float: right;"><i class="trash icon"></i> Delete Selected</button>
 </form>
-<a class="ui mini red icon button" href="/tweets/deleteall/{{user.email}}" style="float: right;"><i class="trash icon"></i> Delete All</a>
+<a class="ui mini red icon button" href="/tweets/deleteall" style="float: right;"><i class="trash icon"></i> Delete All</a>
