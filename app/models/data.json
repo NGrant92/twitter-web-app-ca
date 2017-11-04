@@ -6,21 +6,32 @@
       "lastName": "Simpson",
       "email": "homer@simpson.com",
       "password": "secret",
-      "img": "http://res.cloudinary.com/ngrant/image/upload/v1506255274/LhFydmk_ueraaq.png"
+      "img": "http://res.cloudinary.com/ngrant/image/upload/v1506255274/LhFydmk_ueraaq.png",
+      "admin": false
     },
     "marge": {
       "firstName": "Marge",
       "lastName": "Simpson",
       "email": "marge@simpson.com",
       "password": "secret",
-      "img": "http://res.cloudinary.com/ngrant/image/upload/v1509621811/marge_efpuft.jpg"
+      "img": "http://res.cloudinary.com/ngrant/image/upload/v1509621811/marge_efpuft.jpg",
+      "admin": false
     },
     "bart": {
       "firstName": "Bart",
       "lastName": "Simpson",
       "email": "bart@simpson.com",
       "password": "secret",
-      "img": "http://res.cloudinary.com/ngrant/image/upload/v1503767824/gteyxykqycd8zu2jwtiy.png"
+      "img": "http://res.cloudinary.com/ngrant/image/upload/v1503767824/gteyxykqycd8zu2jwtiy.png",
+      "admin": false
+    },
+    "ned": {
+      "firstName": "Ned",
+      "lastName": "Flanders",
+      "email": "admin@simpson.com",
+      "password": "secret",
+      "img": "https://res.cloudinary.com/ngrant/image/upload/v1509798959/ned.jpg",
+      "admin": true
     }
   },
   "tweets": {
