@@ -69,8 +69,33 @@ exports.remUser = {
 };
 
 exports.addUser = {
+  auth: false,
+
+  validate: {
+    payload: {
+      firstName: Joi.string().required(),
+      lastName: Joi.string().required(),
+      email: Joi.string().email().required(),
+      password: Joi.string().required()
+    },
+
+    options: {
+      abortEarly: false
+    },
+
+    failAction: function(request, reply, source, error) {
+      reply
+        .redirect("/home/admin", {
+          title: "Signup error",
+          errors: error.data.details
+        })
+        .code(400);
+    }
+  },
+
   handler: function(request, reply) {
-    console.log(request.body);
+    console.log(request.payload);
+    console.log("test");
     reply.redirect("/home");
   }
 };

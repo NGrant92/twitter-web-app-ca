@@ -106,11 +106,9 @@ exports.userRegister = {
 
   handler: function(request, reply) {
     const user = new User(request.payload);
-    user.img =
-      "http://res.cloudinary.com/ngrant/image/upload/v1509624963/Profile_iet7qx.png";
+    user.img = "http://res.cloudinary.com/ngrant/image/upload/v1509624963/Profile_iet7qx.png";
     user.admin = false;
-    user
-      .save()
+    user.save()
       .then(newUser => {
         reply.redirect("/login");
       })
