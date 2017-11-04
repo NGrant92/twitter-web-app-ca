@@ -13,16 +13,16 @@ exports.home = {
           .then(tweets => {
             return [tweets.reverse(), foundUser];
           })
-          .then(results => {
-            return Tweet.find({ user: results[1] })
+          .then(result => {
+            return Tweet.find({ user: result[1] })
               .populate("user")
               .then(myTweets => {
-                return [results[0],results[1], myTweets.reverse()];
+                return [result[0],result[1], myTweets.reverse()];
               });
           })
-          .then(results => {
-            return User.find({}).then(userlist => {
-              return [results[0], results[1], results[2], userlist];
+          .then(result => {
+            return User.find({ admin: false }).then(userlist => {
+              return [result[0], result[1], result[2], userlist];
             });
           });
       })
@@ -42,25 +42,6 @@ exports.home = {
   }
 };
 
-exports.tweet = {
-  handler: function(request, reply) {
-    let userEmail = request.auth.credentials.loggedInUser;
-    const tweet = new Tweet(request.payload);
-
-    User.findOne({ email: userEmail })
-      .then(user => {
-        tweet.user = user._id;
-        return tweet.save();
-      })
-      .then(newTweet => {
-        reply.redirect("/home");
-      })
-      .catch(err => {
-        reply.redirect("/");
-      });
-  }
-};
-
 exports.viewUser = {
   handler: function(request, reply) {
     let paramEmail = request.params.email;
@@ -74,7 +55,7 @@ exports.viewUser = {
               return [userTweets.reverse(), foundUser];
             })
             .then(results => {
-              return User.find({}).then(userlist => {
+              return User.find({ admin: false }).then(userlist => {
                 return [results[0], results[1], userlist];
               });
             });
@@ -94,6 +75,25 @@ exports.viewUser = {
     } else {
       reply.redirect("/home");
     }
+  }
+};
+
+exports.tweet = {
+  handler: function(request, reply) {
+    let userEmail = request.auth.credentials.loggedInUser;
+    const tweet = new Tweet(request.payload);
+
+    User.findOne({ email: userEmail })
+        .then(user => {
+          tweet.user = user._id;
+          return tweet.save();
+        })
+        .then(newTweet => {
+          reply.redirect("/home");
+        })
+        .catch(err => {
+          reply.redirect("/");
+        });
   }
 };
 

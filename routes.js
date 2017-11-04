@@ -1,5 +1,5 @@
 const Accounts = require("./app/controllers/accounts");
-const Tweets = require("./app/controllers/tweets");
+const User = require("./app/controllers/user");
 const Assets = require("./app/controllers/assets");
 
 module.exports = [
@@ -12,11 +12,11 @@ module.exports = [
   { method: "GET", path: "/settings", config: Accounts.viewSettings },
   { method: "POST", path: "/settings/update", config: Accounts.updateSettings },
 
-  { method: "GET", path: "/home", config: Tweets.home },
-  { method: "GET", path: "/viewuser/{email}", config: Tweets.viewUser },
-  { method: "POST", path: "/home/tweet", config: Tweets.tweet },
-  { method: "GET", path: "/tweets/deleteall", config: Tweets.deleteAllTweets },
-  { method: "POST", path: "/tweets/deletetweetset", config: Tweets.deleteTweetSet },
+  { method: "GET", path: "/home", config: User.home },
+  { method: "GET", path: "/viewuser/{email}", config: User.viewUser },
+  { method: "POST", path: "/home/tweet", config: User.tweet },
+  { method: "GET", path: "/tweets/deleteall", config: User.deleteAllTweets },
+  { method: "POST", path: "/tweets/deletetweetset", config: User.deleteTweetSet },
 
   {
     method: "GET",
