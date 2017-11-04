@@ -1,0 +1,24 @@
+<form action="/tweets/deletetweetset" method="POST">
+  {{#each allTweets}}
+    <div class="ui segment">
+      <table class="ui padded very basic celled table">
+        <tr>
+          <td>
+            <div class="item">
+              <img class="ui two wide avatar image" src="{{user.img}}"/>
+              <a class="Header"> {{user.firstName}} {{user.lastName}}</a>
+              <p style="word-break:break-all;white-space:normal;">{{message}}</p>
+            </div>
+          </td>
+          <td class="collapsing">
+            <div class="ui checkbox" id="{{../user.id}}">
+              <input type="checkbox" name="{{id}}">
+              <label id="{{id}}"></label>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  {{/each}}
+  <button class="ui mini red icon button" style="float: right;"><i class="trash icon"></i> Delete Selected</button>
+</form>

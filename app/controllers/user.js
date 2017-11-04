@@ -16,8 +16,8 @@ exports.home = {
           .then(result => {
             return Tweet.find({ user: result[1] })
               .populate("user")
-              .then(myTweets => {
-                return [result[0], result[1], myTweets.reverse()];
+              .then(userTweets => {
+                return [result[0], result[1], userTweets.reverse()];
               });
           })
           .then(result => {
@@ -29,9 +29,9 @@ exports.home = {
       .then(result => {
         reply.view("home", {
           title: "Home",
-          tweets: result[0],
+          allTweets: result[0],
           user: result[1],
-          myTweets: result[2],
+          userTweets: result[2],
           userlist: result[3]
         });
       })
@@ -63,9 +63,10 @@ exports.viewUser = {
         .then(result => {
           reply.view("viewuser", {
             title: result[1].firstName + "'s Profile",
-            tweets: result[0],
+            allTweets: result[0],
             user: result[1],
-            userlist: result[2]
+            userlist: result[2],
+            admin: (request.params.admin === "true")
           });
         })
         .catch(err => {

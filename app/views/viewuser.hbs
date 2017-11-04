@@ -8,7 +8,11 @@
   <div class = "eight wide align right column">
     <section class="ui segment" id="timelineTabs" style=overflow:auto;max-height:1200px;min-height:200px;">
       <h3 class="ui dividing header">Timeline</h3>
-      {{> alltweets}}
+      {{#if admin}}
+        {{> usertweetsadmin}}
+      {{else}}
+        {{> alltweets}}
+      {{/if}}
     </section>
   </div>
 
