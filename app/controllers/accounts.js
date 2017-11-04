@@ -96,19 +96,28 @@ exports.userRegister = {
       reply.view("signup", {
           title: "Signup error",
           errors: error.data.details
-        }).code(400);
+        })
+        .code(400);
     }
   },
 
   handler: function(request, reply) {
     const user = new User(request.payload);
+    const isAdmin = (request.params.admin === "true");
+
     user.img = "http://res.cloudinary.com/ngrant/image/upload/v1509624963/Profile_iet7qx.png";
     user.admin = false;
     user.save()
       .then(newUser => {
-        reply.redirect("/login");
+        if(isAdmin){
+          reply.redirect("/home");
+        }
+        else{
+          reply.redirect("/login")
+        }
       })
       .catch(err => {
+        console.log(err);
         reply.redirect("/");
       });
   }
