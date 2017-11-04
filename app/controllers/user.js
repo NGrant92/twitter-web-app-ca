@@ -103,13 +103,12 @@ exports.deleteAllTweets = {
 
     User.findOne({ email: userEmail })
       .then(user => {
-        Logger.info(user.id);
         Tweet.remove({ user: user.id }).then(result => {
           reply.redirect("/home");
         });
       })
       .catch(err => {
-        Logger.info(err);
+        console.log(err);
         reply.redirect("/");
       });
   }
