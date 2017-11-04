@@ -6,34 +6,7 @@
   </div>
 
   <div class = "eight wide align right column">
-    <section class="ui raised segment">
-      <table class="ui padded very basic celled table">
-        <thead>
-        <tr>
-          <th>Users</th>
-          <th>Remove?</th>
-        </tr>
-        </thead>
-        <tbody>
-        {{#each userlist}}
-          <tr>
-            <td>
-              <div id="list{{email}}" class="item">
-                <img class="ui avatar image" src="{{img}}"/>
-                <a class="Header" href="/viewuser/{{email}}"> {{firstName}} {{lastName}}</a>
-                <div class="content">
-                  {{email}}
-                </div>
-              </div>
-            </td>
-            <td class="collapsing">
-              <a href="/admin/remuser/{{email}}" class="ui red icon button"><i class = "trash outline icon"></i></a>
-            </td>
-          </tr>
-        {{/each}}
-        </tbody>
-      </table>
-    </section>
+    {{> userlistadmin}}
   </div>
 
   <div class = "four wide align right column padded">
