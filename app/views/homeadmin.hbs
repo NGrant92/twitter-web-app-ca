@@ -11,20 +11,16 @@
       <h3 class="ui dividing header">Activty Info</h3>
       <div class="ui pointing secondary demo menu">
         <a class="active item" data-tab="first"><i class="users icon"></i>Users</a>
-        <a class="item" data-tab="second"><i class="add user icon"></i>Add User</a>
-        <a class="item" data-tab="third"><i class="world icon"></i>All Tweets</a>
+        <a class="item" data-tab="second"><i class="world icon"></i>All Tweets</a>
       </div>
 
       <div class="ui active tab" data-tab="first" style="padding: 10px;">{{> userlistadmin}}</div>
-      <div class="ui tab" data-tab="second" style="padding: 10px;">{{> useradd}}</div>
-      <div class="ui tab" data-tab="third" style="padding: 10px;">{{> alltweets}}</div>
+      <div class="ui tab" data-tab="second" style="padding: 10px;">{{> alltweets}}</div>
     </section>
   </div>
 
-  <div class = "four wide align right column padded">
-    <section class="ui raised segment">
-      {{> userlist }}
-    </section>
+  <div class = "four wide align right column padded segment">
+      {{> useradd }}
   </div>
 </div>
 

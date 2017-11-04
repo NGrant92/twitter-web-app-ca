@@ -46,3 +46,9 @@ exports.remUser = {
     reply.redirect('/home');
   }
 };
+
+exports.addUser = {
+  handler: function(request, reply) {
+    reply.redirect('/home');
+  }
+};
