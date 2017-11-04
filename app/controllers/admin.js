@@ -17,7 +17,7 @@ exports.home = {
             return Tweet.find({ user: result[1] })
               .populate("user")
               .then(myTweets => {
-                return [result[0],result[1], myTweets.reverse()];
+                return [result[0], result[1], myTweets.reverse()];
               });
           })
           .then(result => {
@@ -43,12 +43,34 @@ exports.home = {
 
 exports.remUser = {
   handler: function(request, reply) {
-    reply.redirect('/home');
+    console.log(request.params.email);
+    let userEmail = request.params.email;
+
+    User.find({ email: userEmail })
+      .then(foundUser => {
+        Tweet.remove({ user: foundUser }).then(result => {
+          console.log("Removed tweets of user");
+        });
+        return foundUser;
+      })
+      .then(foundUser => {
+        User.findOneAndRemove(foundUser).then(result => {
+          console.log("Removed user");
+        });
+      })
+      .then(result => {
+        reply.redirect("/home");
+      })
+      .catch(err => {
+        console.log(err);
+        reply.redirect("/");
+      });
   }
 };
 
 exports.addUser = {
   handler: function(request, reply) {
-    reply.redirect('/home');
+    console.log(request.body);
+    reply.redirect("/home");
   }
 };
