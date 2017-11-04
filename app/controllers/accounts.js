@@ -66,7 +66,11 @@ exports.authenticate = {
             loggedIn: true,
             loggedInUser: user.email
           });
-          reply.redirect("/home", { title: "Welcome Home", user: foundUser });
+          if (foundUser.admin) {
+            reply.redirect("/admin/home", { title: "Welcome Admin" });
+          } else {
+            reply.redirect("/home", { title: "Welcome Home" });
+          }
         } else {
           reply.redirect("/signup");
         }
@@ -84,7 +88,9 @@ exports.userRegister = {
     payload: {
       firstName: Joi.string().required(),
       lastName: Joi.string().required(),
-      email: Joi.string().email().required(),
+      email: Joi.string()
+        .email()
+        .required(),
       password: Joi.string().required()
     },
 
@@ -104,7 +110,8 @@ exports.userRegister = {
 
   handler: function(request, reply) {
     const user = new User(request.payload);
-    user.img = "http://res.cloudinary.com/ngrant/image/upload/v1509624963/Profile_iet7qx.png";
+    user.img =
+      "http://res.cloudinary.com/ngrant/image/upload/v1509624963/Profile_iet7qx.png";
     user.admin = false;
     user
       .save()

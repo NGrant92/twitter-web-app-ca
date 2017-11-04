@@ -17,7 +17,7 @@ exports.home = {
             return Tweet.find({ user: result[1] })
               .populate("user")
               .then(myTweets => {
-                return [result[0],result[1], myTweets.reverse()];
+                return [result[0], result[1], myTweets.reverse()];
               });
           })
           .then(result => {
@@ -84,16 +84,16 @@ exports.tweet = {
     const tweet = new Tweet(request.payload);
 
     User.findOne({ email: userEmail })
-        .then(user => {
-          tweet.user = user._id;
-          return tweet.save();
-        })
-        .then(newTweet => {
-          reply.redirect("/home");
-        })
-        .catch(err => {
-          reply.redirect("/");
-        });
+      .then(user => {
+        tweet.user = user._id;
+        return tweet.save();
+      })
+      .then(newTweet => {
+        reply.redirect("/home");
+      })
+      .catch(err => {
+        reply.redirect("/");
+      });
   }
 };
 

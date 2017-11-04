@@ -1,5 +1,6 @@
 const Accounts = require("./app/controllers/accounts");
 const User = require("./app/controllers/user");
+const Admin = require("./app/controllers/admin");
 const Assets = require("./app/controllers/assets");
 
 module.exports = [
@@ -11,6 +12,8 @@ module.exports = [
   { method: "GET", path: "/logout", config: Accounts.logout },
   { method: "GET", path: "/settings", config: Accounts.viewSettings },
   { method: "POST", path: "/settings/update", config: Accounts.updateSettings },
+
+  { method: "GET", path: "/admin/home", config: Admin.home },
 
   { method: "GET", path: "/home", config: User.home },
   { method: "GET", path: "/viewuser/{email}", config: User.viewUser },
