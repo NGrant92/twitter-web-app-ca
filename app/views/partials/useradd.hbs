@@ -1,10 +1,10 @@
 
   <div class="title">
-    <i class = "add user icon"></i> Add User <i class = "dropdown icon" style="float:right;"></i>
+    <i class = "add user icon"></i> Add User <i class="dropdown icon" style="float:right;"></i>
   </div>
   <div class="content">
     <div class="ui fluid form ">
-      <form action="/admin/adduser" method="POST">
+      <form action="/register" method="POST">
         <div class="field">
           <label>First Name</label>
           <input placeholder="First Name" type="text" name="firstName" value="Lisa">
@@ -21,7 +21,7 @@
           <label>Password</label>
           <input type="password" name="password" value="secret">
         </div>
-        <button class="ui blue icon button"><i class = "add user icon"></i> Add</button>
+        <button class="ui blue icon button"><i class="add user icon"></i> Add</button>
       </form>
       {{> formerror }}
     </div>

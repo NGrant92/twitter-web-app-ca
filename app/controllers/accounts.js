@@ -84,9 +84,7 @@ exports.userRegister = {
     payload: {
       firstName: Joi.string().required(),
       lastName: Joi.string().required(),
-      email: Joi.string()
-        .email()
-        .required(),
+      email: Joi.string().email().required(),
       password: Joi.string().required()
     },
 
@@ -95,12 +93,10 @@ exports.userRegister = {
     },
 
     failAction: function(request, reply, source, error) {
-      reply
-        .view("signup", {
+      reply.view("signup", {
           title: "Signup error",
           errors: error.data.details
-        })
-        .code(400);
+        }).code(400);
     }
   },
 

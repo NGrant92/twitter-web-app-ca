@@ -43,7 +43,6 @@ exports.home = {
 
 exports.remUser = {
   handler: function(request, reply) {
-    console.log(request.params.email);
     let userEmail = request.params.email;
 
     User.find({ email: userEmail })
@@ -51,10 +50,9 @@ exports.remUser = {
         Tweet.remove({ user: foundUser }).then(result => {
           console.log("Removed tweets of user");
         });
-        return foundUser;
       })
-      .then(foundUser => {
-        User.findOneAndRemove(foundUser).then(result => {
+      .then(result => {
+        User.findOneAndRemove({email: userEmail}).then(result => {
           console.log("Removed user");
         });
       })
@@ -65,37 +63,5 @@ exports.remUser = {
         console.log(err);
         reply.redirect("/");
       });
-  }
-};
-
-exports.addUser = {
-  auth: false,
-
-  validate: {
-    payload: {
-      firstName: Joi.string().required(),
-      lastName: Joi.string().required(),
-      email: Joi.string().email().required(),
-      password: Joi.string().required()
-    },
-
-    options: {
-      abortEarly: false
-    },
-
-    failAction: function(request, reply, source, error) {
-      reply
-        .redirect("/home/admin", {
-          title: "Signup error",
-          errors: error.data.details
-        })
-        .code(400);
-    }
-  },
-
-  handler: function(request, reply) {
-    console.log(request.payload);
-    console.log("test");
-    reply.redirect("/home");
   }
 };

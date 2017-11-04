@@ -15,7 +15,6 @@ module.exports = [
 
   { method: "GET", path: "/home/admin", config: Admin.home },
   { method: "GET", path: "/admin/remuser/{email}", config: Admin.remUser },
-  { method: "POST", path: "/admin/adduser", config: Admin.addUser },
 
   { method: "GET", path: "/home/user", config: User.home },
   { method: "GET", path: "/viewuser/{email}", config: User.viewUser },
