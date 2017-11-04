@@ -66,11 +66,7 @@ exports.authenticate = {
             loggedIn: true,
             loggedInUser: user.email
           });
-          if (foundUser.admin) {
-            reply.redirect("/admin/home", { title: "Welcome Admin" });
-          } else {
-            reply.redirect("/home", { title: "Welcome Home" });
-          }
+          reply.redirect("/home");
         } else {
           reply.redirect("/signup");
         }
@@ -181,6 +177,23 @@ exports.updateSettings = {
         reply.redirect("/home");
       })
       .catch(err => {
+        reply.redirect("/");
+      });
+  }
+};
+
+exports.isAdmin = {
+  handler: function(request, reply) {
+    User.findOne({ email: request.auth.credentials.loggedInUser })
+      .then(user => {
+        if (user.admin) {
+          reply.redirect("/home/admin");
+        } else {
+          reply.redirect("/home/user");
+        }
+      })
+      .catch(err => {
+        console.log(err);
         reply.redirect("/");
       });
   }

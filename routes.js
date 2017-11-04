@@ -13,13 +13,17 @@ module.exports = [
   { method: "GET", path: "/settings", config: Accounts.viewSettings },
   { method: "POST", path: "/settings/update", config: Accounts.updateSettings },
 
-  { method: "GET", path: "/admin/home", config: Admin.home },
+  { method: "GET", path: "/home/admin", config: Admin.home },
+  { method: "GET", path: "/admin/remuser/{email}", config: Admin.remUser },
 
-  { method: "GET", path: "/home", config: User.home },
+  { method: "GET", path: "/home/user", config: User.home },
   { method: "GET", path: "/viewuser/{email}", config: User.viewUser },
   { method: "POST", path: "/home/tweet", config: User.tweet },
   { method: "GET", path: "/tweets/deleteall", config: User.deleteAllTweets },
   { method: "POST", path: "/tweets/deletetweetset", config: User.deleteTweetSet },
+
+
+  { method: "GET", path: "/home", config: Accounts.isAdmin },
 
   {
     method: "GET",
