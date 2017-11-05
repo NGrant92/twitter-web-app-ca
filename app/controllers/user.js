@@ -45,8 +45,14 @@ exports.home = {
 exports.viewUser = {
   handler: function(request, reply) {
     let paramEmail = request.params.email;
+    let loggedInUser = request.auth.credentials.loggedInUser;
 
-    if (paramEmail !== request.auth.credentials.loggedInUser) {
+    let isAdmin;
+    User.findOne({email : loggedInUser}).then(user => {
+      isAdmin = user.admin;
+    });
+
+    if (paramEmail !== loggedInUser) {
       User.findOne({ email: paramEmail })
         .then(foundUser => {
           return Tweet.find({ user: foundUser })
@@ -66,7 +72,7 @@ exports.viewUser = {
             allTweets: result[0],
             user: result[1],
             userlist: result[2],
-            admin: (request.params.admin === "true")
+            admin: isAdmin
           });
         })
         .catch(err => {

@@ -17,7 +17,7 @@ module.exports = [
   { method: "GET", path: "/admin/remuser/{email}", config: Admin.remUser },
 
   { method: "GET", path: "/home/user", config: User.home },
-  { method: "GET", path: "/viewuser/{email}/{admin}", config: User.viewUser },
+  { method: "GET", path: "/viewuser/{email}", config: User.viewUser },
   { method: "POST", path: "/home/tweet", config: User.tweet },
   { method: "GET", path: "/tweets/deleteall", config: User.deleteAllTweets },
   { method: "POST", path: "/tweets/deletetweetset", config: User.deleteTweetSet },

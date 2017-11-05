@@ -29,7 +29,7 @@ exports.home = {
       .then(result => {
         reply.view("homeadmin", {
           title: "Admin Home",
-          tweets: result[0],
+          allTweets: result[0],
           user: result[1],
           userlist: result[3]
         });
