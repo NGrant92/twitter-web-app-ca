@@ -1,5 +1,13 @@
 # Twitter Web App
-## Assignment for Web Development
+## Assignment #1 for Web Development
+
+#### Author Details:
+
+**Name:** Niall Grant
+
+**Student Number:** 11414608
+
+**Github repo:** https://github.com/NGrant92/twitter-web-app-ca
 
 #### Core Assignment Spec:
 
