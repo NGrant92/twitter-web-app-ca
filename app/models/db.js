@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-let dbURI = 'mongodb://twitteruser:twitteruser@ds249355.mlab.com:49355/twitter-web-app';
+let dbURI = "mongodb://twitteruser:twitteruser@ds249355.mlab.com:49355/twitter-web-app";
 //let dbURI = 'mongodb://localhost/twitter';
 if (process.env.NODE_ENV === 'production') {
   dbURI = process.env.MONGOLAB_URI;
