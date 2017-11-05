@@ -5,8 +5,6 @@
 
 **Name:** Niall Grant
 
-**Student Number:** 11414608
-
 **Github repo:** https://github.com/NGrant92/twitter-web-app-ca
 
 #### Core Assignment Spec:
