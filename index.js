@@ -6,8 +6,17 @@ const Hapi = require('hapi');
 //creating new hapi server
 let server = new Hapi.Server();
 
+const fs = require('fs');
+var options = {
+  port: 4443,     //  or any port you wish
+  tls: {
+    key: fs.readFileSync('private/webserver.key'),
+    cert: fs.readFileSync('private/webserver.crt')
+  }
+};
+
 //setting the server connection to localhost:4000
-server.connection({ port: process.env.PORT || 4000 });
+server.connection(options);
 
 require('./app/models/db');
 
