@@ -7,11 +7,11 @@ const Hapi = require('hapi');
 let server = new Hapi.Server();
 
 const fs = require('fs');
-var options = {
+let options = {
   port: 4443,     //  or any port you wish
   tls: {
     key: fs.readFileSync('app/private/webserver.key'),
-    cert: fs.readFileSync('app/private/webserver.crt')
+    cert: fs.readFileSync('app/private/webserver_self.crt')
   }
 };
 
@@ -19,12 +19,6 @@ var options = {
 server.connection(options);
 
 require('./app/models/db');
-
-//server.bind({
-//currentUser: {},
-//users: [],
-//donations: [],
-//});
 
 server.register([require('inert'), require('vision'), require('hapi-auth-cookie')], err => {
 
