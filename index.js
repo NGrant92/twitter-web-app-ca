@@ -10,8 +10,8 @@ const fs = require('fs');
 var options = {
   port: 4443,     //  or any port you wish
   tls: {
-    key: fs.readFileSync('private/webserver.key'),
-    cert: fs.readFileSync('private/webserver.crt')
+    key: fs.readFileSync('app/private/webserver.key'),
+    cert: fs.readFileSync('app/private/webserver.crt')
   }
 };
 
